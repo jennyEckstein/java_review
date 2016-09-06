@@ -8,7 +8,10 @@ public class GenericMethod {
 		method.print(integers);
 		method.print(strings);
 	}
-	
+	/*
+	 * you can declare generic method as a sub-type
+	 * public <E extends GeometricObj> boolean equalArea(){}
+	 */
 	public <E> void print(E[] list){
 		for(int i = 0; i < list.length; i++){
 			System.out.print(list[i] + " ");
