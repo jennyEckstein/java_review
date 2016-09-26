@@ -14,7 +14,10 @@ class Student implements Cloneable{
 		this.name = name;
 		
 	}
-	
+	/**
+	 * clone() method is unstable and may lead to data sharing
+	 * not recommended for use. Instead should use copy constructor
+	 */
 	@Override
 	public Student clone() throws CloneNotSupportedException{
 		return (Student) super.clone();
