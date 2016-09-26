@@ -1,10 +1,30 @@
 package deep_vs_shallow_copy;
 
 import java.util.ArrayList;
+
 import java.util.Collections;
 import java.util.List;
 
+
+class Student implements Cloneable{
+	int id;
+	String name;
+	Student(int id, String name){
+		this.id = id;
+		this.name = name;
+		
+	}
+	
+	@Override
+	public Student clone() throws CloneNotSupportedException{
+		return (Student) super.clone();
+	}
+	
+}
+
 public class Deep_Vs_Shallow_Copy {
+	
+
 
 	/*
 	 * If you simply assign one array to another,
@@ -55,11 +75,32 @@ public class Deep_Vs_Shallow_Copy {
 		System.out.println(copy.toString() + " = " + list.toString());
 	}
 	
+	
 	public static void main (String [] args){
 		Deep_Vs_Shallow_Copy copy = new Deep_Vs_Shallow_Copy();
 		
 		copy.shallowArray();
 		copy.deepArray();
 		copy.copyArrayList();
+		
+		Student s1 = new Student(1, "Daisy");
+		Student s2;
+		try {
+			s2 = (Student) s1.clone();
+			System.out.println("Objects: " + s1 + " = " + s2);
+			System.out.println("Actual Values: " + s1.id + " = " + s2.id + " " + s1.name + " = " + s2.name);
+			s1.id = 3;
+			s1.name = "Sam";
+			
+			System.out.println("Actual Values: " + s1.id + " = " + s2.id + " " + s1.name + " = " + s2.name);
+		} catch (CloneNotSupportedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
 	}
+	
+	
 }
